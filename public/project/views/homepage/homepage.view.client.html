@@ -1,0 +1,277 @@
+<!-- SECTION ABOUT US STARTS-->
+<section id="about">
+    <div class="guitar2">
+        <!--<img class="img-responsive" src="../img/project-images/guitar2.jpg" alt="guitar">-->
+    </div>
+    <div class="about-content">
+        <h2><strong>Evento -  Event search made easy </strong> </h2>
+        <p>We have created an extremely positive and relaxed environment all geared towards developing your skills whether you are an
+            absolute beginner trying to get off the ground or an accomplished player looking to move to the next level.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        </p>
+        <a href="#" class="btn btn-warning"><strong>Know More</strong> <i class="fa fa-angle-right"></i></a>
+    </div>
+</section>
+
+<!-- SECTON ABOUT US ENDS -->
+
+<! -- LOGIN & REGISTERATION STARTS -->
+<div ng-if="!currentUser">
+    <section id="login">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 style="font-family:Verdana">Login User</h3>
+
+                    <div ng-if="model.loginError" class="alert alert-danger" role="alert">
+                        {{model.loginError}}
+                    </div>
+
+                    <div ng-if="model.loginSuccess" class="alert alert-info" role="alert">
+                        {{model.loginSuccess}}
+                    </div>
+
+                    <form name="LoginForm" novalidate>  
+
+                        <div class="form-group"> 
+                            <input ng-model="username" 
+                                   class="form-control" 
+                                   placeholder="Username" 
+                                   name="username" 
+                                   id="username" 
+                                   type="text" 
+                                   required/>  
+
+                            <div ng-show="LoginForm.username.$invalid && LoginForm.$submitted"> 
+                                <span class="error"> Username Required </span> 
+                            </div> 
+                        </div>  
+
+                        <div class="form-group"> 
+                            <input ng-model="password" 
+                                   class="form-control" 
+                                   placeholder="Password" 
+                                   name="password" 
+                                   d="password" 
+                                   type="password" 
+                                   required/>  
+
+                            <div ng-show="LoginForm.password.$invalid && LoginForm.$submitted"> 
+                                <span class="error"> Password Required </span> 
+                            </div> 
+                        </div>  
+
+                        <div class="form-group"> 
+                            <button class="btn btn-primary btn-block" 
+                                    type="submit" 
+                                    ng-click="model.login(username,password,LoginForm)"> Login 
+                            </button> 
+
+                            <a class="btn btn-danger btn-block"
+                               href="/auth/google" > 
+                                <i class="fa fa-google"></i> Google Login 
+                            </a> 
+                        </div> 
+                    </form>
+                </div>
+
+                <div class="col-md-4">
+                </div>
+
+                <div class="col-md-4">
+                    <h3 style="font-family:Verdana">Register</h3>
+
+                    <div ng-if="model.registerError" class="alert alert-danger" role="alert">
+                        {{model.registerError}}
+                    </div>
+
+                    <div ng-if="model.registerSuccess" class="alert alert-info" role="alert">
+                        {{model.registerSuccess}}
+                    </div>
+
+                    <form name="RegisterForm" novalidate>
+                        <div class="form-group">
+                            <label for="usernameReg">Username</label>
+                            <input  ng-model="usernameReg"
+                                    class="form-control"
+                                    placeholder="Username"
+                                    id="usernameReg"
+                                    name="usernameReg"
+                                    type="text"
+                                    required/>
+
+                            <div ng-show="RegisterForm.usernameReg.$invalid && RegisterForm.$submitted">
+                                <span class="error"> Username Required </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input ng-model="email"
+                                   class="form-control"
+                                   placeholder="abc@example.com"
+                                   id="email"
+                                   name="email"
+                                   type="email"
+                                   required/>
+
+                            <div ng-show="RegisterForm.email.$invalid && RegisterForm.$submitted">
+                                <span class="error">    Please provide a c</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password1">Password</label>
+                            <input  ng-model="passwordReg"
+                                    class="form-control"
+                                    placeholder="password"
+                                    id="password1"
+                                    name="passwordReg"
+                                    type="password"
+                                    required/>
+
+                            <div ng-show="RegisterForm.passwordReg.$invalid && RegisterForm.$submitted">
+                                <span class="error"> Please enter a password </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password2">Verify Password</label>
+                            <input  ng-model="verifyPassword"
+                                    class="form-control"
+                                    placeholder="Verify Password"
+                                    id="password2"
+                                    name="verifyPassword"
+                                    type="password"
+                                    required/>
+
+                            <div ng-show="RegisterForm.verifyPassword.$invalid && RegisterForm.$submitted">
+                                <span class="error"> Please enter a password</span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <button type="submit"
+                                    ng-click="model.register(usernameReg,passwordReg,email,RegisterForm)"
+                                    class="btn btn-primary btn-block">
+                                SignUp
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- LOGIN & REGISTERATION ENDS -->
+</div>
+
+<!-- CONTACT US STARTS -->
+<section id="contact">
+
+    <!-- MAP STARTS -->
+    <div id="map">
+        <div id="gmap-wrap">
+            <div id="gmap"> <h2> Adding GMAPS</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAP ENDS -->
+
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-4">
+                    <div class="contact-text">
+                        <h3>Contact</h3>
+                        <address>
+                            E-mail: kumar.pr@husky.neu.edu<br>
+                            Phone: +1 (801) 706 7771<br>
+                            Fax: +1 (123) 456 7891
+                        </address>
+                    </div>
+                    <div class="contact-address">
+                        <h3>Address</h3>
+                        <address>
+                            691 Parker Street<br>
+                            Mission Main<br>
+                            Boston - MA 02120<br>
+                            United States of America
+                        </address>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div id="contact-section">
+                        <h3>Send a message</h3>
+                        <!-- MESSAGE SENFING ENCOUNTERED ERROR -->
+                        <div ng-if="model.emailError" class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                    aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                            <strong>Message Sending Failed </strong> {{model.messageError}}
+                        </div>
+
+                        <!-- MESSAGE SENDING SUCCESSFULLY-->
+                        <div ng-if="model.emailSuccess" class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                    aria-label="Close">
+                                <span aria-hidden="true">X</span></button>
+                            <strong>Message Sent </strong> {{model.messageSuccess}}
+                        </div>
+
+                        <!-- FORM THAT CONTAINS THE MESSAGE -->
+                        <form id="main-contact-form"
+                              class="contact-form"
+                              name="contactForm"
+                              novalidate>
+
+                            <div class="form-group">
+                                <input ng-model="model.sendmail.username"
+                                       type="text"
+                                       name="name"
+                                       class="form-control"
+                                       required data-validation-required-message="Username required. Please Enter";
+                                       placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <input ng-model="model.sendmail.fromMail"
+                                       type="email"
+                                       name="email"
+                                       class="form-control"
+                                       required data-validation-required-message="Email required. Please Enter";
+                                       placeholder="Email ID">
+                            </div>
+
+                            <div class="form-group">
+                                    <textarea ng-model="model.sendmail.message"
+                                              name="message"
+                                              id="message"
+                                              required="required"
+                                              class="form-control"
+                                              rows="4"
+                                              required data-validation-required-message="Message required. Please Enter"
+                                              placeholder="Enter your message"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <button ng-click="model.sendMail(model.sendmail,contactForm)"
+                                        type="submit"
+                                        class="btn btn-primary pull-right">Send
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTACT US ENDS -->

@@ -1,0 +1,108 @@
+<!-- CONTACT US STARTS -->
+<section id="contact">
+
+    <!-- MAP STARTS -->
+    <div id="map">
+        <div id="gmap-wrap">
+            <div id="gmap"> <h2> Adding GMAPS</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAP ENDS -->
+
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-4">
+                    <div class="contact-text">
+                        <h3>Contact</h3>
+                        <address>
+                            E-mail: kumar.pr@husky.neu.edu<br>
+                            Phone: +1 (801) 706 7771<br>
+                            Fax: +1 (123) 456 7891
+                        </address>
+                    </div>
+                    <div class="contact-address">
+                        <h3>Address</h3>
+                        <address>
+                            691 Parker Street<br>
+                            Mission Main<br>
+                            Boston - MA 02120<br>
+                            United States of America
+                        </address>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div id="contact-section">
+                        <h3>Send a message</h3>
+                        <!-- MESSAGE SENFING ENCOUNTERED ERROR -->
+                        <div ng-if="model.emailError" class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                    aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                            <strong>Message Sending Failed </strong> {{model.messageError}}
+                        </div>
+
+                        <!-- MESSAGE SENDING SUCCESSFULLY-->
+                        <div ng-if="model.emailSuccess" class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                    aria-label="Close">
+                                <span aria-hidden="true">X</span></button>
+                            <strong>Message Sent </strong> {{model.messageSuccess}}
+                        </div>
+
+                        <!-- FORM THAT CONTAINS THE MESSAGE -->
+                        <form id="main-contact-form"
+                              class="contact-form"
+                              name="contactForm"
+                              novalidate>
+
+                            <div class="form-group">
+                                <input ng-model="model.sendmail.username"
+                                       type="text"
+                                       name="name"
+                                       class="form-control"
+                                       required data-validation-required-message="Username required. Please Enter";
+                                       placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <input ng-model="model.sendmail.fromMail"
+                                       type="email"
+                                       name="email"
+                                       class="form-control"
+                                       required data-validation-required-message="Email required. Please Enter";
+                                       placeholder="Email ID">
+                            </div>
+
+                            <div class="form-group">
+                                    <textarea ng-model="model.sendmail.message"
+                                              name="message"
+                                              id="message"
+                                              required="required"
+                                              class="form-control"
+                                              rows="4"
+                                              required data-validation-required-message="Message required. Please Enter"
+                                              placeholder="Enter your message"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <button ng-click="model.sendMail(model.sendmail,contactForm)"
+                                        type="submit"
+                                        class="btn btn-primary pull-right">Send
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTACT US ENDS -->

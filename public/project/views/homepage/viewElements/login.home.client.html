@@ -1,0 +1,148 @@
+<! -- LOGIN & REGISTERATION STARTS -->
+<section id="login">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h3 style="font-family:Verdana">Login User</h3>
+
+                <div ng-if="model.loginError" class="alert alert-danger" role="alert">
+                    {{model.loginError}}
+                </div>
+
+                <div ng-if="model.loginSuccess" class="alert alert-info" role="alert">
+                    {{model.loginSuccess}}
+                </div>
+
+                <form name="LoginForm" novalidate>  
+
+                    <div class="form-group"> 
+                        <input ng-model="username" 
+                               class="form-control" 
+                               placeholder="Username" 
+                               name="username" 
+                               id="username" 
+                               type="text" 
+                               required/>  
+
+                        <div ng-show="LoginForm.username.$invalid && LoginForm.$submitted"> 
+                            <span class="error"> Username Required </span> 
+                        </div> 
+                    </div>  
+
+                    <div class="form-group"> 
+                        <input ng-model="password" 
+                               class="form-control" 
+                               placeholder="Password" 
+                               name="password" 
+                               d="password" 
+                               type="password" 
+                               required/>  
+
+                        <div ng-show="LoginForm.password.$invalid && LoginForm.$submitted"> 
+                            <span class="error"> Password Required </span> 
+                        </div> 
+                    </div>  
+
+                    <div class="form-group"> 
+                        <button class="btn btn-primary btn-block" 
+                                type="submit" 
+                                ng-click="model.login(username,password,LoginForm)"> Login 
+                        </button> 
+
+                        <a class="btn btn-danger btn-block"
+                           href="/auth/google" > 
+                            <i class="fa fa-google"></i> Google Login 
+                        </a> 
+                    </div> 
+                </form>
+            </div>
+
+            <div class="col-md-4">
+            </div>
+
+            <div class="col-md-4">
+                <h3 style="font-family:Verdana">Register</h3>
+
+                <div ng-if="model.registerError" class="alert alert-danger" role="alert">
+                    {{model.registerError}}
+                </div>
+
+                <div ng-if="model.registerSuccess" class="alert alert-info" role="alert">
+                    {{model.registerSuccess}}
+                </div>
+
+                <form name="RegisterForm" novalidate>
+                    <div class="form-group">
+                        <label for="usernameReg">Username</label>
+                        <input  ng-model="usernameReg"
+                                class="form-control"
+                                placeholder="Username"
+                                id="usernameReg"
+                                name="usernameReg"
+                                type="text"
+                                required/>
+
+                        <div ng-show="RegisterForm.usernameReg.$invalid && RegisterForm.$submitted">
+                            <span class="error"> Username Required </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input ng-model="email"
+                               class="form-control"
+                               placeholder="abc@example.com"
+                               id="email"
+                               name="email"
+                               type="email"
+                               required/>
+
+                        <div ng-show="RegisterForm.email.$invalid && RegisterForm.$submitted">
+                            <span class="error">    Please provide a c</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password1">Password</label>
+                        <input  ng-model="passwordReg"
+                                class="form-control"
+                                placeholder="password"
+                                id="password1"
+                                name="passwordReg"
+                                type="password"
+                                required/>
+
+                        <div ng-show="RegisterForm.passwordReg.$invalid && RegisterForm.$submitted">
+                            <span class="error"> Please enter a password </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password2">Verify Password</label>
+                        <input  ng-model="verifyPassword"
+                                class="form-control"
+                                placeholder="Verify Password"
+                                id="password2"
+                                name="verifyPassword"
+                                type="password"
+                                required/>
+
+                        <div ng-show="RegisterForm.verifyPassword.$invalid && RegisterForm.$submitted">
+                            <span class="error"> Please enter a password</span>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit"
+                                ng-click="model.register(usernameReg,passwordReg,email,RegisterForm)"
+                                class="btn btn-primary btn-block">
+                            SignUp
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- LOGIN & REGISTERATION ENDS -->
