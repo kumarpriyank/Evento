@@ -25,7 +25,8 @@ module.exports = function () {
     mongoose.connect(connectionString);
     var models = {
         userModel: require("./users/users.model.server.js")(),
-        eventModel: require("./events/events.model.server.js")()
+        eventModel: require("./events/events.model.server.js")(),
+        commentModel: require("./comments/comments.model.server.js")()
     };
     return models;
 };
