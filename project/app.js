@@ -4,4 +4,5 @@ module.exports = function (app) {
 
     require("./services/events.service.server.js")(app, models);
     require("./services/users.service.server.js")(app, models);
+    require("./services/comments.service.server.js")(app,models);
 };
