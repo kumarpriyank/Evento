@@ -26,7 +26,9 @@ module.exports = function () {
     var models = {
         userModel: require("./users/users.model.server.js")(),
         eventModel: require("./events/events.model.server.js")(),
-        commentModel: require("./comments/comments.model.server.js")()
+        commentModel: require("./comments/comments.model.server.js")(),
+        followersModel: require("./followers/followers.model.server.js")()
     };
+
     return models;
 };

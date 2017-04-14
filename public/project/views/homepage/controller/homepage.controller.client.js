@@ -14,6 +14,7 @@
         vm.register = register;
         vm.sendMail = sendMail;
         vm.searchEventByName=searchEventByName;
+        vm.searchEventByNameLocation=searchEventByNameLocation;
 
 
         // Function that will be called every time
@@ -73,6 +74,7 @@
                     firstName: "",
                     lastName: "",
                     email: email,
+                    url:'',
                     type: "m",
                     role: "u"
                 };
@@ -111,6 +113,15 @@
             console.log($('#searchevent').val());
             if ($('#searchevent').val() != "")
                 $location.url("/event/" + eventName + "/location/boston");
+        }
+
+        /*
+         * Searches for an event based on name and location
+         */
+        function searchEventByNameLocation(event, location, SearchForm) {
+            if (SearchForm.$valid) {
+                $location.url("/event/" + event + "/location/" + location);
+            }
         }
     }
 })();

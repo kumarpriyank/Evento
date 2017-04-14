@@ -92,21 +92,25 @@
 
                     <form name="LoginForm" novalidate>  
 
-                        <div class="form-group"> 
-                            <input ng-model="username" 
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input ng-model="username"
                                    class="form-control btn-round" 
-                                   placeholder="Username" 
                                    name="username" 
                                    id="username" 
-                                   type="text" 
+                                   type="text"
+                                   placeholder="username" 
                                    required/>  
+
 
                             <div ng-show="LoginForm.username.$invalid && LoginForm.$submitted"> 
                                 <span class="error"> Username Required </span> 
                             </div> 
-                        </div>  
+                        </div>
+
 
                         <div class="form-group"> 
+                            <label for="password1">Password</label>
                             <input ng-model="password" 
                                    class="form-control btn-round" 
                                    placeholder="Password" 
@@ -121,20 +125,23 @@
                         </div>  
 
                         <div class="form-group"> 
-                            <button class="btn btn-primary btn-block btn-round" 
+                            <button class="event-name btn btn-warning btn-block btn-round" 
                                     type="submit" 
                                     ng-click="model.login(username,password,LoginForm)"> Login 
                             </button> 
-
-                            <a class="btn btn-danger btn-block btn-round"
-                               href="/auth/google" > 
-                                <i class="fa fa-google"></i> Google Login 
-                            </a> 
                         </div> 
                     </form>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" style="padding-top:150px;">
+                    <a class="btn btn-warning btn-block btn-round"
+                       href="/auth/google"> 
+                        <i class="fa fa-google"></i> Google Login 
+                    </a> 
+                    <a class="btn btn-warning btn-block btn-round"
+                       href="/auth/facebook"> 
+                        <i class="fa fa-facebook"></i> Facebook Login 
+                    </a> 
                 </div>
 
                 <div class="col-md-4">
@@ -211,7 +218,7 @@
                         <div class="form-group">
                             <button type="submit"
                                     ng-click="model.register(usernameReg,passwordReg,email,RegisterForm)"
-                                    class="btn btn-primary btn-block btn-round">
+                                    class="event-name btn btn-warning btn-block btn-round">
                                 SignUp
                             </button>
                         </div>
@@ -225,22 +232,119 @@
 </div>
 <!-- LOGIN & REGISTERATION ENDS -->
 
-<!-- SECTION ABOUT US STARTS-->
-<section id="about">
-    <div class="guitar2">
-        <!--<img class="img-responsive" src="../img/project-images/guitar2.jpg" alt="guitar">-->
+<!-- EVENT DESCRIPTION-->
+<section id="event">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+                <div id="event-carousel" class="carousel slide" data-interval="false">
+                    <h2 class="heading event-name">THE STAGE ROCKERS</h2>
+                    <a class="even-control-left" href="" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                    <a class="even-control-right" href="" data-slide="next"><i class="fa fa-angle-right"></i></a>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="single-event">
+                                        <img class="img-responsive" src="../../../../images/projectImages/events/event1.jpg" alt="event-image">
+                                        <h4 class="event-name">Chester Bennington</h4>
+                                        <h5 class="event-name">Vocal</h5>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="single-event">
+                                        <img class="img-responsive" src="../../../../images/projectImages/events/event2.jpg" alt="event-image">
+                                        <h4 class="event-name">Mike Shinoda</h4>
+                                        <h5 class="event-name">vocals, rhythm guitar</h5>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="single-event">
+                                        <img class="img-responsive" src="../../../../images/projectImages/events/event3.jpg" alt="event-image">
+                                        <h4 class="event-name">Rob Bourdon</h4>
+                                        <h5 class="event-name">drums</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="single-event">
+                                        <img class="img-responsive" src="../../../../images/projectImages/events/event1.jpg" alt="event-image">
+                                        <h4 class="event-name">Chester Bennington</h4>
+                                        <h5 class="event-name">Vocal</h5>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="single-event">
+                                        <img class="img-responsive" src="../../../../images/projectImages/events/event2.jpg" alt="event-image">
+                                        <h4 class="event-name">Mike Shinoda</h4>
+                                        <h5 class="event-name">vocals, rhythm guitar</h5>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="single-event">
+                                        <img class="img-responsive" src="../../../../images/projectImages/events/event3.jpg" alt="event-image">
+                                        <h4 class="event-name">Rob Bourdon</h4>
+                                        <h5 class="event-name">drums</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="guitar">
+                <img class="img-responsive" src="../../../../images/projectImages/guitar.png" alt="guitar">
+            </div>
+        </div>
     </div>
-    <div class="about-content">
-        <h2><strong>Evento -  Event search made easy </strong> </h2>
-        <p>We have created an extremely positive and relaxed environment all geared towards developing your skills whether you are an
-            absolute beginner trying to get off the ground or an accomplished player looking to move to the next level.
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-        </p>
-        <a href="#" class="btn btn-warning btn-round"><strong>Know More</strong> <i class="fa fa-angle-right"></i></a>
-    </div>
+</section><!--/#event-->
+<!-- EVENT DESCRIPTION ENDS -->
+
+<section id="explore">
+    <div class="col-md-8">
+        <form name="SearchForm" novalidate>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text"
+                           ng-model="location"
+                           class="form-control"
+                           placeholder="Location"
+                           name="location"
+                           required
+                           id="location"/>
+
+                    <div ng-show="SearchForm.location.$invalid && SearchForm.$submitted">
+                        <span class="error"> Location Missing </span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <input id="eventname"
+                           type="text"
+                           ng-model="event"
+                           class="form-control"
+                           name="eventname"
+                           required
+                           placeholder="Event Name"/>
+
+                    <div ng-show="SearchForm.eventname.$invalid && SearchForm.$submitted">
+                        <span class="error">Event Missing</span>
+                    </div>
+                </div>
+                <div class="input-group-btn col-md-4">
+                    <button ng-click="model.searchEventByNameLocation(event, location, SearchForm)" class=" event-name btn btn-warning btn-round" type="submit"> Search</button>
+                </div>
+            </div>
+        </form>
+
+</div>
+<div class="col-md-4">
+    <h2><strong> SEARCH EVENTS </strong></h2>
+</div>
 </section>
-<!-- SECTON ABOUT US ENDS -->
 
 <!-- SECTON TWITTER FEEDS START -->
 <section id="twitter">
@@ -254,27 +358,45 @@
                 <div class="text-center carousel-inner center-block">
                     <div class="item active">
                         <img src="../../../images/projectImages/twitter/twitter1.png" alt="">
-                        <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit </p>
-                        <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                        <p>Work later to add recent tweets for eventsto this section </p>
+                        <a href="">http://t.co/yY7s1IfrAb 2 days ago</a>
                     </div>
                     <div class="item">
                         <img src="../../../images/projectImages/twitter/twitter2.png" alt="">
                         <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit </p>
-                        <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                        <a href="">http://t.co/yY7s1IfrAb 2 days ago</a>
                     </div>
                     <div class="item">
                         <img src="../../../images/projectImages/twitter/twitter3.png" alt="">
                         <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit </p>
-                        <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                        <a href="">http://t.co/yY7s1IfrAb 2 days ago</a>
                     </div>
                 </div>
-                <a class="twitter-control-left" href="#twitter-feed" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                <a class="twitter-control-right" href="#twitter-feed" data-slide="next"><i class="fa fa-angle-right"></i></a>
+                <a class="twitter-control-left" href="#/" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="twitter-control-right" href="#/" data-slide="next"><i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </div>
 </section>
 <!-- SECTON TWITTER FEEDS ENDS -->
+
+<!-- SECTION ABOUT US STARTS-->
+<section id="about">
+    <div class="guitar2">
+        <!--<img class="img-responsive" src="../img/project-images/guitar2.jpg" alt="guitar">-->
+    </div>
+    <div class="about-content">
+        <h2><strong>Evento -  Event search made easy </strong> </h2>
+        <p>We have created an extremely positive and relaxed environment all geared towards developing your skills whether you are an
+            absolute beginner trying to get off the ground or an accomplished player looking to move to the next level.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        </p>
+        <a href="#" class="event-name btn btn-warning btn-round"><strong>Know More</strong> <i class="fa fa-angle-right"></i></a>
+
+    </div>
+</section>
+<!-- SECTON ABOUT US ENDS -->
 
 <!-- SPONSORS SECTION STARTS -->
 <section id="sponsor">
@@ -283,17 +405,17 @@
             <div class="row">
                 <div class="col-sm-10">
                     <h2 style="color:white">Sponsors</h2>
-                    <a class="sponsor-control-left" href="#/" data-slide="prev"><strong><i class="fa fa-angle-left"></i></strong></a>
-                    <a class="sponsor-control-right" href="#/" data-slide="next"><strong><i class="fa fa-angle-right"></i></strong></a>
+                    <a class="sponsor-control-left" href="" data-slide="prev"><strong><i class="fa fa-angle-left"></i></strong></a>
+                    <a class="sponsor-control-right" href="" data-slide="next"><strong><i class="fa fa-angle-right"></i></strong></a>
                     <div class="carousel-inner">
                         <div class="item active">
                             <ul>
-                                <li><a href="#"><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor1.png" alt=""></a></li>
-                                <li><a href="#"><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor2.png" alt=""></a></li>
-                                <li><a href="#"><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor3.png" alt=""></a></li>
-                                <li><a href="#"><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor4.png" alt=""></a></li>
-                                <li><a href="#"><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor5.png" alt=""></a></li>
-                                <li><a href="#"><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor6.png" alt=""></a></li>
+                                <li><a href=""><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor1.png" alt=""></a></li>
+                                <li><a href=""><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor2.png" alt=""></a></li>
+                                <li><a href=""><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor3.png" alt=""></a></li>
+                                <li><a href=""><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor4.png" alt=""></a></li>
+                                <li><a href=""><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor5.png" alt=""></a></li>
+                                <li><a href=""><img class="img-responsive" src="../../../../images/projectImages/sponsor/sponsor6.png" alt=""></a></li>
                             </ul>
                         </div>
                     </div>
@@ -310,13 +432,19 @@
 <!-- CONTACT US STARTS -->
 <section id="contact">
     <!-- MAP STARTS -->
-    <div id="map">
+    <div class="contact-section" id="map">
         <div id="gmap-wrap">
             <div id="gmap"></div>
         </div>
     </div>
     <!-- MAP ENDS -->
+
+
     <div class="contact-section">
+        <div class="photo-ear-piece">
+            <img class="img-responsive" src="../images/projectImages/con.png" alt="">
+        </div>
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 col-sm-offset-4">
@@ -338,9 +466,9 @@
                         </address>
                     </div>
                 </div>
-                <div class="col-sm-5">
-                    <div id="contact-section">
-                        <h3>Send a message</h3>
+                <div id="contact-section">
+                    <h3>Send a message</h3>
+                    <div class="col-sm-5">
                         <!-- MESSAGE SENFING ENCOUNTERED ERROR -->
                         <div ng-if="model.emailError" class="alert alert-danger alert-dismissible" role="alert">
                             <button type="button"
@@ -358,7 +486,8 @@
                                     class="close"
                                     data-dismiss="alert"
                                     aria-label="Close">
-                                <span aria-hidden="true">X</span></button>
+                                <span aria-hidden="true">X</span>
+                            </button>
                             <strong>Message Sent </strong> {{model.messageSuccess}}
                         </div>
 
@@ -369,6 +498,7 @@
                               novalidate>
 
                             <div class="form-group">
+
                                 <input ng-model="model.sendmail.username"
                                        type="text"
                                        name="name"
@@ -394,13 +524,14 @@
                                               class="form-control btn-round"
                                               rows="4"
                                               required data-validation-required-message="Message required. Please Enter"
-                                              placeholder="Enter your message"></textarea>
+                                              placeholder="Enter your message">
+                                    </textarea>
                             </div>
 
                             <div class="form-group">
                                 <button ng-click="model.sendMail(model.sendmail,contactForm)"
                                         type="submit"
-                                        class="btn btn-primary pull-right btn-round">Send
+                                        class="event-name btn btn-primary pull-right btn-round">Send
                                 </button>
                             </div>
                         </form>
@@ -410,5 +541,6 @@
         </div>
     </div>
 </section>
-<script src="../js/project-js/main.js"></script>
 <!-- CONTACT US ENDS -->
+
+<script src="../js/project-js/main.js"></script>

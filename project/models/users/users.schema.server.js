@@ -35,7 +35,10 @@ var UserSchema = mongoose.Schema({
         default: 'u'
     },
     facebookLink: String,
-    dateofBirth: Date,
+    dateofBirth: {
+        type: Date,
+        default: Date.now
+    },
     url: String,
     type: {
         type: String,

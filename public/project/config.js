@@ -50,6 +50,19 @@
                 }})
     }
 
+    function checkProfileAccess($location, UserService, $q, $rootScope){
+        var deferred = $q.defer();
+        UserService.loggedIn().then(
+            function(response){
+                var user = response.data;
+
+                if(user == '0'){  $rootScope.currentUser = null;  deferred.reject();  $location.url("/"); }
+                else{  $rootScope.currentUser = user; deferred.resolve(); }},
+
+            function(error){ $location.url("/"); } );
+        return deferred.promise;
+    }
+
     function checkLoggedIn($location, UserService, $q, $rootScope) {
         var deferred = $q.defer();
         UserService.loggedIn().then(
@@ -63,19 +76,6 @@
                     deferred.resolve();
                 },
                 function (error) { $location.url("/"); } );
-        return deferred.promise;
-    }
-
-    function checkProfileAccess($location, UserService, $q, $rootScope){
-        var deferred = $q.defer();
-        UserService.loggedIn().then(
-                function(response){
-                    var user = response.data;
-
-                    if(user == '0'){  $rootScope.currentUser = null;  deferred.reject();  $location.url("/"); }
-                    else{  $rootScope.currentUser = user; deferred.resolve(); }},
-
-                function(error){ $location.url("/"); } );
         return deferred.promise;
     }
 

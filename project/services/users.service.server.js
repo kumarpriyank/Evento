@@ -5,6 +5,8 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 var sg = require('sendgrid').SendGrid('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');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 module.exports = function (app, models) {
 
@@ -70,6 +72,86 @@ module.exports = function (app, models) {
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
+    // FACEBOOK AUTHENTICATION
+    // Generating facebook configuration Object
+    var facebookConfig = {
+        clientID :"1876601035942674",
+        clientSecret: "be786de9d831f8be92686f37e00403aa",
+        callbackURL: 'http://localhost:3000/auth/facebook/callback'
+        // clientID     : process.env.FACEBOOK_CLIENT_ID,
+        // clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        //callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    };
+
+    // Adding the login, session and encryption
+    app.get("/auth/facebook", passport.authenticate('facebook'));
+    app.get("/auth/facebook/callback", passport.authenticate('facebook',{ successRedirect: '/project/#/',  failureRedirect: '/project/#/login' }));
+
+    passport.use('facebook',new FacebookStrategy(facebookConfig,facebookLogin));
+
+    /*
+     *    Implementing FaceBook Strategy
+     */
+    function facebookLogin(token, refreshToken, profile, done){
+
+        userModel.findFacebookUser(profile.id).then(
+            function(fbUser){
+
+                if(fbUser)
+                    return done(null,fbUser);
+                else
+                    fbUser = {
+                        username: profile.displayName.replace(/ /g,''),
+                        facebook:{
+                            token: token,
+                            id: profile.id,
+                            displayName: profile.displayName }};
+
+                userModel.createUser(fbUser).then( function(user){ done(null, user); } );
+            });
+    }
+
+    // GOOGLE AUTHETICATION
+    var googleConfig = {
+        clientID     : "807649706166-s2ll8ff77t3rlemisp9hom2eiabg8apv.apps.googleusercontent.com",
+        clientSecret : "Svlk34RXohEFl7IIfmMPMa5I",
+        callbackURL  : "http://localhost:3000/auth/google/callback"
+    };
+
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/project/#/', failureRedirect: '/project/#/login'}));
+
+    passport.use('google', new GoogleStrategy(googleConfig, googleStrategy));
+
+    function googleStrategy(token, refreshToken, profile, done) {
+
+        userModel.findUserByGoogleId(profile.id).then(
+            function(user) {
+                if(user)
+                    return done(null, user);
+                else {
+                        var email = profile.emails[0].value;
+                        var emailParts = email.split("@");
+                        var newGoogleUser = {
+                            username:  emailParts[0],
+                            firstName: profile.name.givenName,
+                            lastName:  profile.name.familyName,
+                            email:     email,
+                            google: {
+                                id:    profile.id,
+                                token: token,
+                                displayName:profile.name.givenName
+                            }
+                        };
+                        return userModel.createUser(newGoogleUser);
+                    }},
+                function(err) {
+                    if (err)
+                        return done(err);
+                }).then(
+                    function(user){ return done(null, user); },
+                    function(err){  return done(err); });
+    }
 
 
     /*
@@ -139,7 +221,7 @@ module.exports = function (app, models) {
      */
     function logout(req, res) {
         req.logout();
-        res.send(200);
+        res.sendStatus(200);
     }
 
     /*
