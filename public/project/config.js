@@ -20,6 +20,13 @@
                 resolve: {
                     loggedIn: checkLoggedIn
                 }})
+            .when("/admin",{
+                templateUrl: "views/admin/view/adminusers.view.client.html",
+                controller: "AdminController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkProfileAccess
+                }})
             .when("/user/profile", {
                 templateUrl: "views/usersProfile/views/userProfile.view.client.html",
                 controller: "UserProfileController",

@@ -15,8 +15,8 @@
             register: register,
             sendMail: sendMail,
             updateUser:updateUser,
-            deleteUser : deleteUser,
-            getAllUsers: getAllUsers,
+            removeUser : removeUser,
+            fetchAllUsers: fetchAllUsers,
             findUserById:findUserById,
             findUserByUsername:findUserByUsername,
             findUserByCredentials : findUserByCredentials
@@ -45,7 +45,7 @@
         }
 
         function createUser(user){
-            return $http.post("/api/user",user);
+            return $http.post("/api/users",user);
         }
 
         function sendMail(sendMail){
@@ -65,11 +65,11 @@
             return $http.get("/activity/api/user/"+username);
         }
 
-        function deleteUser(userId){
+        function removeUser(userId){
             return $http.delete("/api/user/" + userId);
         }
 
-        function getAllUsers(){
+        function fetchAllUsers(){
             return $http.get("/api/user");
         }
 

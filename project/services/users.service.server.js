@@ -115,13 +115,13 @@ module.exports = function (app, models) {
     var googleConfig = {
         clientID     : "807649706166-s2ll8ff77t3rlemisp9hom2eiabg8apv.apps.googleusercontent.com",
         clientSecret : "Svlk34RXohEFl7IIfmMPMa5I",
-        callbackURL  : "http://localhost:3000/auth/google/callback"
+        callbackURL  : 'http://localhost:3000/auth/google/callback'
     };
 
     app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/project/#/', failureRedirect: '/project/#/login'}));
 
-    passport.use('google', new GoogleStrategy(googleConfig, googleStrategy));
+    passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
     function googleStrategy(token, refreshToken, profile, done) {
 
@@ -191,17 +191,9 @@ module.exports = function (app, models) {
      */
     function deserializeUser(user, done) {
 
-        if (user.type == "m") {
-
             userModel.findUserById(user._id).then(
                     function (user) { done(null, user); },
                     function (err)  { done(err, null); } );
-        } else if (user.type == "d") {
-
-            userModel.findUserById(user._id).then(
-                    function (user) { done(null, user); },
-                    function (err)  { done(err, null); } );
-        }
     }
 
 
@@ -391,8 +383,7 @@ module.exports = function (app, models) {
         else if(username)
             getUserByUsername(username,res);
         else
-            getAllUsers(request, res);
-
+            getAllUsers(req, res);
     }
 
     /*

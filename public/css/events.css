@@ -67,6 +67,10 @@ footer {
     font-family: 'Copperplate', 'Lucida Sans Typewriter', 'sans-serif';
 }
 
+.table-font-name {
+    font-family: 'Copperplate', 'Lucida Sans Typewriter', 'sans-serif';
+}
+
 .boximg{
     position:relative;
     overflow:hidden;
