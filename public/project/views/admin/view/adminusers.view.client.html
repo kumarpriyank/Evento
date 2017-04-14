@@ -23,43 +23,23 @@
 
             <table class="table table-inverse table-responsive">
                 <thead>
-                <tr class="theadrow table-font-name">
+                <tr class="table-font-name">
 
-                    <th ng-click="model.sortBy('firstName')" class="nowrap table-font-name">
-                        <span ng-show="(model.checkUserName == 'firstName') && (model.isReverse == false)"
-                              class="glyphicon glyphicon-triangle-top"
-                              aria-hidden="true"></span>
-                        <span ng-show="(model.chekUsername == 'firstName') && (model.isReverse == true)"
-                              class="glyphicon glyphicon-triangle-bottom"
-                              aria-hidden="true"></span> First Name
-                    </th>
+                    <th class="nowrap table-font-name">First Name</th>
 
-                    <th ng-click="model.sortBy('lastName')" class="nowrap table-font-name">
-                        <span ng-show="(model.checkUserName == 'firstName') && (model.isReverse == false)"
-                              class="glyphicon glyphicon-triangle-top"
-                              aria-hidden="true"></span>
-                        <span ng-show="(model.chekUsername == 'firstName') && (model.isReverse == true)"
-                              class="glyphicon glyphicon-triangle-bottom"
-                              aria-hidden="true"></span> Last Name
+                    <th class="nowrap table-font-name"> Last Name
                     </th>
 
 
-                    <th ng-click="model.sortBy('username')" class="nowrap table-font-name">
-                        <span ng-show="(model.checkUserName == 'username') && (model.isReverse == false)"
-                              class="glyphicon glyphicon-triangle-top"
-                              aria-hidden="true"></span>
-                        <span ng-show="(model.chekUsername == 'username') && (model.isReverse == true)"
-                              class="glyphicon glyphicon-triangle-bottom"
-                              aria-hidden="true"></span> Username
-                    </th>
+                    <th  class="nowrap table-font-name"> Username </th>
 
-                    <th class="table-font-name">Email</th>
+                    <th class="nowrap table-font-name">Email</th>
                     <th class="table-font-name">Roles</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <!--class="forms-input-row"-->
+
                 <tr>
                     <td>
                         <input ng-model="model.selectedUser.firstName"
