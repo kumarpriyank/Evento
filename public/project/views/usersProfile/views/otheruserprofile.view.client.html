@@ -11,8 +11,9 @@
                 </div>
                 <h2><strong>{{model.userNow[0].username}}: Home Page</strong></h2>
             </div>
-<!--ng-if="model.userFollowing && model.username !== model.loggedInUser.username && model.loggedInUser"-->
-            <div
+            <!--ng-if="model.userFollowing && model.username !== model.loggedInUser.username && model.loggedInUser"-->
+
+            <div ng-if="model.isUserFollowing && model.username !== model.loggedInUser.username && model.loggedInUser"
                  class="card-info profile-header-container">
                 <span class="card-title">
                     <a ng-click="model.removeUser()"
@@ -20,8 +21,8 @@
                         <span class="glyphicon glyphicon-user"></span> UnFollow</a>
                 </span>
             </div>
-<!-- ng-if="!model.isUserFollowing && model.loggedInUser && model.username != model.loggedInUser.username"-->
-            <div class="profile-header-container card-info">
+            <!-- ng-if="!model.isUserFollowing && model.loggedInUser && model.username != model.loggedInUser.username"-->
+            <div ng-if="!model.isUserFollowing && model.loggedInUser && model.username != model.loggedInUser.username" class="profile-header-container card-info">
                 <span class="card-title">
                     <a  ng-click="model.addUser()" class="event-name btn btn-warning btn-default btn-round">
                         <span class="glyphicon glyphicon-user"></span>  Follow Me</a>
