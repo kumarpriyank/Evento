@@ -1,0 +1,57 @@
+.profile-header {
+    margin-top: 55px;
+}
+
+.profile-header-member{
+    margin-top:80px;
+}
+
+/**
+ * Profile image component
+ */
+.profile-header-container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-header-img {
+    padding: 54px;
+}
+
+.profile-header-img > img.img-circle {
+    width: 180px;
+    height: 180px;
+    border: 2px solid rgba(209, 19, 16, 0.81);
+    align-content: center;
+}
+
+.profile-header {
+    margin-top: 43px;
+}
+
+
+.label.label-default.rank-label {
+    background-color: #FF8C00;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+.btn-round{
+    border-radius: 17px;
+}
+
+.btn-round1{
+    border-radius: 13px;
+}
+
+.padL{
+    padding-left: 18px;
+}
+
+.padB{
+    padding-left: 20px;
+}
+
+
+
+

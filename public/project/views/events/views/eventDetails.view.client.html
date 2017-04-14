@@ -1,0 +1,138 @@
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <h2> <p class="lead event-heading"> <strong> Event Categories</strong> </p> </h2>
+            <div class="list-group">
+                <a ng-repeat = "category in model.categories"
+                   ng-click=model.getEventByCategory(category.name);
+                   class="list-group-item">{{category.name}}</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="row carousel-holder">
+
+                <div class="col-md-12">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="slide-image" src="../../../../images/projectImages/events/img.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="../../../../images/projectImages/events/img1.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="../../../../images/projectImages/events/img2.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="../../../../images/projectImages/events/img3.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row eventSubsection">
+                <div class="container-fluid">
+                <div class="thumbnail boximg">
+
+                    <img class="image-set img-rounded" ng-src="{{model.getSafeImageUrl(model.event.logo)}}"/>
+
+                    <div class="caption tmb-head">
+                        <h1 class="event-name">{{model.event.name.text}}</h1>
+                    </div>
+
+                    <div class="event-detail event-heading" ng-bind-html="model.getSafeContent(model.event.description.html)"></div>
+
+
+                    <div class="eventSubsection">
+                        <h3 class="event-name btn btn-round btn-warning pull-right">
+                            <strong>Reviews: {{model.comments.length}}</strong>
+                        </h3>
+                        <h3 class="event-name btn btn-round btn-warning">
+                            <a class="event-name" target="_blank" href="{{model.event.url}}">Book Now</a>
+                        </h3>
+                        <h3 class="event-name btn btn-round btn-warning">
+                            <strong>Event Starts: {{model.getDate(model.event.start.local)}}</strong>
+                        </h3>
+                        <h3 class="event-name btn btn-round btn-warning">
+                            <strong>Event Ends: {{model.getDate(model.event.end.local)}}</strong>
+                        </h3>
+                    </div>
+
+                </div>
+
+                <div class="eventSubsection">
+                    <a class="event-name btn btn-warning btn-round pull-left"
+                       ng-click="#"><span class="glyphicon glyphicon-comment"></span> &nbsp; Comments</a>
+
+                    <a ng-click="model.saveThisEvent()"
+                       ng-if="model.user && !model.isEventSaved"
+                       class="event-name btn btn-warning btn-round pull-right"><span class="glyphicon glyphicon-thumbs-up"></span> &nbsp;Save</a>
+
+                    <a ng-click="model.unsaveThisEvent()"
+                       ng-if="model.user && model.isEventSaved"
+                       class="event-name btn btn-warning btn-round pull-right"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp; Unsave</a>
+                </div>
+
+                <div class="eventSubsection" style="padding-top:40px;">
+                    <section class="comments">
+                        <article ng-repeat="comment in model.comments" class="comment">
+                            <a class="comment-img" href="#">
+                                <img ng-if="comment.url" ng-src="{{comment.url}}" alt="" width="50" height="50"/>
+                                <img ng-if="!comment.url" ng-src="../../../../images/projectImages/comm.png" alt="" width="50" height="50">
+                            </a>
+                            <div class="comment-body">
+                                <div class="text">
+                                    <p>{{comment.commentText}}</p>
+                                </div>
+                                <p class="attribution">by
+                                    <a ng-click="model.getAnotherProfile(comment.username)"> {{comment.username}} </a> at
+                                    <time datetime="04-16-2017 11:05">{{comment.dateCreated}}</time>
+                                    <a ng-if="model.user.username == comment.username || model.user.role == 'a'"
+                                       class="pull-right"
+                                       ng-click="model.deleteComment(comment._id)"><span class="fa fa-trash"></span>
+                                    </a>
+                                </p>
+                                <p class="attribution"> <ng-rating ng-model="comment.eventRating"></ng-rating></p>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+
+                <div class="event-comment-area no-padding blank event-name">
+                    <div class="comments-form-event">
+                        <form name="commentForm" novalidate>
+                            <textarea ng-model="commentText"
+                                          id="commentText"
+                                          name="comment"
+                                          required
+                                          placeholder="Please enter comments">
+
+                            </textarea>
+
+                            <button ng-click="model.createComment(commentText,commentForm)"
+                               id="commentButton"
+                               class="btn btn-warning btn-round event-name pull-right"><i class="fa fa-comment"></i> POST
+                            </button>
+                            <ng-rating editable="true" ng-model="model.rating">
+                            </ng-rating>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

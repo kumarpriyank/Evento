@@ -1,0 +1,60 @@
+<div class="container-fluid">
+   <div class="row">
+
+       <div class="col-md-3">
+           <h2><p class="lead event-heading"><strong> Event Categories</strong></p></h2>
+           <div class="list-group">
+               <a ng-repeat = "category in model.categories"
+                  ng-click=model.getEventByCategory(category.name);
+                  class="list-group-item">{{category.name}}</a>
+           </div>
+       </div>
+
+       <div class="col-md-9">
+
+           <div class="row carousel-holder">
+
+               <div class="col-md-12">
+                   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                       <ol class="carousel-indicators">
+                           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                           <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                       </ol>
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <img class="slide-image" src="../../../../images/projectImages/events/img.jpg" alt="">
+                           </div>
+                           <div class="item">
+                               <img class="slide-image" src="../../../../images/projectImages/events/img1.jpg" alt="">
+                           </div>
+                           <div class="item">
+                               <img class="slide-image" src="../../../../images/projectImages/events/img2.jpg" alt="">
+                           </div>
+                           <div class="item">
+                               <img class="slide-image" src="../../../../images/projectImages/events/img3.jpg" alt="">
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="row">
+               <div class="col-xs-6 col-sm-4 col-lg-4 col-md-4" ng-repeat="event in model.events">
+                   <div class="thumbnail boximg">
+                       <img class="image-set img-rounded" ng-src="{{model.getSafeImageUrl(event.logo)}}">
+                       <span class="label label-danger date">Start Date: {{model.getDate(event.start.local)}}</span>
+                       <div class="caption tmb-head">
+                           <h4 class="event-name">{{event.name.text}}</h4>
+                       </div>
+                       <div class="caption">
+                           <h3 class="event-name btn btn-round btn-warning"><a class="event-name" href="#/event/{{event.id}}">More Info</a></h3>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+   </div>
+</div>

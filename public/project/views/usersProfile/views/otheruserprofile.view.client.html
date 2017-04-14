@@ -1,0 +1,226 @@
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="profile-header-container">
+                <div class="profile-header-img" style="padding-bottom:0px;">
+                    <img ng-if="model.loggedInUser.url" class="img-circle" ng-src="{{model.loggedInUser.url}}" />
+                    <img ng-if="!model.loggedInUser.url" class="img-circle" ng-src="../../../img/project-images/user.png" />
+                </div>
+                <h2><strong>{{model.userNow[0].username}}: Home Page</strong></h2>
+            </div>
+<!--ng-if="model.userFollowing && model.username !== model.loggedInUser.username && model.loggedInUser"-->
+            <div
+                 class="card-info profile-header-container">
+                <span class="card-title">
+                    <a ng-click="model.removeUser()"
+                       class="event-name btn btn-warning btn-default btn-round">
+                        <span class="glyphicon glyphicon-user"></span> UnFollow</a>
+                </span>
+            </div>
+<!-- ng-if="!model.isUserFollowing && model.loggedInUser && model.username != model.loggedInUser.username"-->
+            <div class="profile-header-container card-info">
+                <span class="card-title">
+                    <a  ng-click="model.addUser()" class="event-name btn btn-warning btn-default btn-round">
+                        <span class="glyphicon glyphicon-user"></span>  Follow Me</a>
+                </span>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-9 profile-header btn-pref btn-group">
+
+            <center  style="padding-left:10px;padding-right:10px;">
+
+                <div class="tabnav">
+
+                    <div class="btn-group btn-group-justified">
+
+                        <div class="btn-group" role="group">
+                            <button id="b1"
+                                    type="button"
+                                    class="btn btn-nav"
+                                    href="#tab1"
+                                    data-toggle="tab">
+
+                                <div class="visible" style="white-space: nowrap;">
+                                          <span class="glyphicon glyphicon-user"
+                                                aria-hidden="true"></span> &nbsp;&nbsp; Home
+                                </div>
+                            </button>
+                        </div>
+
+                        <div class="btn-group" role="group">
+
+                            <button type="button"
+                                    class="btn btn-nav"
+                                    href="#tab2"
+                                    data-toggle="tab" >
+
+                                <div class="visible" style="white-space: nowrap;">
+                                          <span class="glyphicon glyphicon-heart"
+                                                aria-hidden="true"></span> &nbsp;&nbsp; Liked &nbsp;&nbsp;
+                                    <span class="badge">{{model.eventsLikedMember.length}}</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div class="btn-group" role="group">
+                            <button type="button"
+                                    class="btn btn-nav"
+                                    href="#tab3"
+                                    data-toggle="tab">
+
+                                <div class="visible" style="white-space: nowrap;">
+                                          <span class="glyphicon glyphicon-flag"
+                                                aria-hidden="true"></span> &nbsp;&nbsp; Following &nbsp;&nbsp;
+                                    <span class="badge">{{model.membersFollowing.length}}</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-nav" href="#tab4" data-toggle="tab">
+                                <div class="visible" style="white-space: nowrap;">
+                                    <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> &nbsp;&nbsp; Followed &nbsp;&nbsp;
+                                    <span class="badge">{{model.membersFollowers.length}}</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div class="btn-group" role="group">
+
+                            <button type="button" class="btn btn-nav" href="#tab5" data-toggle="tab">
+
+                                <div class="visible" style="white-space:nowrap;">
+                                    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> &nbsp;&nbsp; Dashboard  &nbsp;&nbsp;
+                                </div>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div  class="tab-content " style= "margin-top:10px;">
+
+                    <!--  USER INFORMATION -->
+                    <div class="tab-pane panel  col-md-4 active" id="tab1" style="background-color:#245269;">
+
+                        <div class="form-group">
+                            <label for="firstName" class="col-2 col-form-label">First Name </label>
+
+                            <div class="col-10">
+
+                                <input ng-model="model.userNow[0].firstName"
+                                       class="form-control btn-round"
+                                       type="text"
+                                       id="firstName"
+                                       readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName" class="col-2 col-form-label">Last Name </label>
+                            <div class="col-10">
+                                <input ng-model="model.userNow[0].lastName"
+                                       class="form-control btn-round"
+                                       type="text"
+                                       id="lastName"
+                                       readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="email" class="col-2 col-form-label">Email</label>
+                            <div class="col-10">
+                                <input  ng-model="model.userNow[0].email"
+                                        class="form-control btn-round"
+                                        type="email"
+                                        id="email"
+                                        readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="dateofBirth" class="col-2 col-form-label">Date of Birth</label>
+                            <div class="col-10">
+                                <input ng-model="model.userNow[0].date"
+                                       class="form-control btn-round"
+                                       type="text"
+                                       id="dateofBirth"
+                                       readonly/>
+                            </div>
+                        </div>
+
+                        <p>
+                            <strong> Lets Connect At: &nbsp;&nbsp;</strong>
+                            <a target="_blank" ng-src="{{model.userNow[0].facebooklink}}">
+                                <span class="fa fa-facebook"></span><strong>&nbsp;&nbsp;Facebook</strong>
+                            </a>
+                        </p>
+
+                    </div>
+
+                    <!--  LIKED EVENTS -->
+                    <div class="tab-pane panel in" id="tab2" style="background-color:#245269">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-4 col-lg-4 col-md-4" ng-repeat="event in model.eventsLikedMember track by $index">
+                                <div class="thumbnail">
+                                    <img class="image-set" ng-src="{{event.eventImage}}">
+                                    <div class="caption">
+                                        <h4 class="event-name">{{event.eventName}}</h4>
+                                    </div>
+
+                                    <div class="caption">
+                                        <h3 class="event-name"><a href="#/event/{{event.eventId}}">Book Tickets Here</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  FOLLOWING USERS -->
+                    <div class="tab-pane panel in" id="tab3" style="background-color:#245269">
+                        <div class="row">
+                            <div class="col-md-3" ng-repeat="user in model.membersFollowing track by $index">
+                                <div class="profile-header-img member-profile">
+                                    <img ng-if="user.url" class="img-circle" ng-src="{{user.url}}"/>
+                                    <img ng-if="!user.url" class="img-circle" ng-src="../../../images/projectImages/user.png"/>
+                                    <a class="member-profile" href="#/user/activity/profile/{{user.username}}">
+                                        <h3 class="event-name">{{user.username}}</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  FOLLOWED USERS -->
+                    <div class="tab-pane panel fade in" id="tab4" style="background-color:#245269" >
+                        <div class="row">
+                            <div class="col-md-3" ng-repeat="user in model.membersFollowers track by $index">
+                                <div class="profile-header-img member-profile">
+                                    <img ng-if="user.url" class="img-circle" ng-src="{{user.url}}"/>
+                                    <img ng-if="!user.url" class="img-circle" ng-src="../../../images/projectImages/user.png"/>
+                                    <a class="member-profile" href="#/user/activity/profile/{{user.username}}">
+                                        <h3 class="event-name">{{user.username}}</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane panel fade in" id="tab5" style="background-color:#245269">
+                        Keep Tuned for User Status Dashboards
+                    </div>
+
+                </div>
+
+            </center>
+
+        </div>
+
+    </div>
+</div>

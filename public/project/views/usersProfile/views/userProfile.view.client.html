@@ -1,0 +1,127 @@
+<div class="container-fluid profile-header">
+
+    <h1 class="text-center"><strong>Profile Update</strong></h1>
+
+
+    <div ng-if="model.success" class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">X</span></button>
+        {{model.success}}
+    </div>
+
+    <div ng-if="model.error" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">X</span></button>
+        {{model.error}}
+    </div>
+
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-3">
+        <div class="row">
+
+            <div class="profile-header-container">
+                <div class="profile-header-img">
+                    <img ng-if="model.user.url" class="img-circle" ng-src="{{model.user.url}}" />
+                    <img ng-if="!model.user.url" class="img-circle" ng-src="../../../img/project-images/user.png" />
+
+                    <div>
+                        <h2><strong>Welcome Back : {{model.user.username}}</strong></h2>
+                    </div>
+                </div>
+
+                <!-- Code for uploading the profile picture-->
+                <form action="/profile/uploads" method="post" enctype="multipart/form-data">
+                    <h3> <strong>Upload Profile Picture</strong></h3>
+
+                    <input name="myFile" type="file" class="form-control btn-round"/>
+                    <input name="userId" value="{{model.user._id}}" style="display: none"/>
+                    <br>
+                    <button type="submit" class="event-name btn btn-block btn-warning btn-round">Upload Image</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-3">
+        <form name="profileUpdateForm"  novalidate>
+
+            <div class="form-group row">
+                <label for="username" class="col-2 col-form-label padL">Username</label>
+                <div class="col-10">
+                    <input  ng-model="model.user.username"
+                            class="form-control btn-round"
+                            type="text"
+                            placeholder="Artisanal Kale"
+                            id="username"
+                            readonly/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-2 col-form-label padL">Email</label>
+                <div class="col-10">
+                    <input  ng-model="model.user.email"
+                            class="form-control btn-round"
+                            type="email"
+                            placeholder="bootstrap@example.com"
+                            id="email"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="firstName" class="col-2 col-form-label padL">First Name </label>
+                <div class="col-10">
+                    <input ng-model="model.user.firstName"
+                           class="form-control btn-round"
+                           type="text"
+                           placeholder="Artisanal"
+                           id="firstName"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="lastName" class="col-2 col-form-label padL">Last Name </label>
+                <div class="col-10">
+                    <input ng-model="model.user.lastName"
+                           class="form-control btn-round"
+                           type="text"
+                           placeholder="Kale"
+                           id="lastName"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="dateofBirth" class="col-2 col-form-label padL">Date of Birth</label>
+                <div class="col-10">
+                    <input ng-model="user.model.date"
+                           class="form-control btn-round"
+                           type="date"
+                           placeholder="2011/08/09"
+                           id="dateofBirth"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="facebookLink" class="col-2 col-form-label padL">Facebook Url</label>
+                <div class="col-10">
+                    <input ng-model="user.model.facebookLink"
+                           class="form-control btn-round"
+                           type="text"
+                           placeholder="https://www.facebook.com"
+                           id="facebookLink"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <a class="event-name btn btn-warning btn-block btn-round" ng-click="model.updateUserProfile(model.user)">Update User Info</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-2">
+    </div>
+
+
+</div>
