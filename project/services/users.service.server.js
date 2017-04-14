@@ -75,12 +75,9 @@ module.exports = function (app, models) {
     // FACEBOOK AUTHENTICATION
     // Generating facebook configuration Object
     var facebookConfig = {
-        clientID :"1876601035942674",
-        clientSecret: "be786de9d831f8be92686f37e00403aa",
-        callbackURL: 'http://localhost:3000/auth/facebook/callback'
-        // clientID     : process.env.FACEBOOK_CLIENT_ID,
-        // clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        //callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
     };
 
     // Adding the login, session and encryption
@@ -113,9 +110,9 @@ module.exports = function (app, models) {
 
     // GOOGLE AUTHETICATION
     var googleConfig = {
-        clientID     : "807649706166-s2ll8ff77t3rlemisp9hom2eiabg8apv.apps.googleusercontent.com",
-        clientSecret : "Svlk34RXohEFl7IIfmMPMa5I",
-        callbackURL  : 'http://localhost:3000/auth/google/callback'
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
     };
 
     app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));

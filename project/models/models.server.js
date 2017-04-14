@@ -10,8 +10,11 @@ module.exports = function () {
     // If the database cs5610spring does not exist then it creates it.
     var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring';
 
+    if(process.env.MONGODB_URI){
+        connectionString = process.env.MONGODB_URI
+    }
 
-
+/*
     if(process.env.MLAB_USERNAME) {
         connectionString = process.env.MLAB_USERNAME + ":" +
             process.env.MLAB_PASSWORD + "@" +
@@ -20,7 +23,7 @@ module.exports = function () {
             process.env.MLAB_APP_NAME;
     }
 
-
+*/
     //Get the default connection
     mongoose.connect(connectionString);
     var models = {
