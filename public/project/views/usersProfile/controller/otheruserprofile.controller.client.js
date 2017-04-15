@@ -68,19 +68,19 @@
                     }
                 });
 
+
             // FIND THE USER BY USERNAME
             UserService.findUserByUsername(vm.username).then(
                 function(res) {
-                    vm.userNow = res.data;
+                    vm.userNow = res.data[0];
                     for (var event in  vm.userNow.eventsLiked){
                         EventService.findEventByIdFromDB( vm.userNow.eventsLiked[event]).then(
-                            function (succ) {  vm.eventsLikedMember.push(succ.data[0]); },
+                            function (succ) {  vm.eventsLikedMember.push(succ.data); },
                             function (err) { vm.eventsLikedMember = []; });
                     }
                 },
                 function (error) {
                     vm.loggedInUserError = "Unable to load user profile. Please try again";  });
-
         }
 
         // Follow a User and add yourself to the following user followers
@@ -124,6 +124,14 @@
                     }
                 },
                 function (err) { init(); });
+        }
+
+        /*
+         *   Responsible for checking the URL and returning safe URL
+         */
+        function getSafeUrl(url){
+            if(url)
+                return $sce.trustAsResourceUrl(url);
         }
     }
 

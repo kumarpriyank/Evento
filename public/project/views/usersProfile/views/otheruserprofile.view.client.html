@@ -9,7 +9,8 @@
                     <img ng-if="model.loggedInUser.url" class="img-circle" ng-src="{{model.loggedInUser.url}}" />
                     <img ng-if="!model.loggedInUser.url" class="img-circle" ng-src="../../../images/projectImages/user.png" />
                 </div>
-                <h2><strong>{{model.userNow[0].username}}: Home Page</strong></h2>
+                <!-- model.userNow[0].username-->
+                <h2><strong>{{model.userNow.username}}: Home Page</strong></h2>
             </div>
             <!--ng-if="model.userFollowing && model.username !== model.loggedInUser.username && model.loggedInUser"-->
 
@@ -115,7 +116,7 @@
 
                             <div class="col-10">
 
-                                <input ng-model="model.userNow[0].firstName"
+                                <input ng-model="model.userNow.firstName"
                                        class="form-control btn-round"
                                        type="text"
                                        id="firstName"
@@ -126,7 +127,7 @@
                         <div class="form-group">
                             <label for="lastName" class="col-2 col-form-label">Last Name </label>
                             <div class="col-10">
-                                <input ng-model="model.userNow[0].lastName"
+                                <input ng-model="model.userNow.lastName"
                                        class="form-control btn-round"
                                        type="text"
                                        id="lastName"
@@ -138,7 +139,7 @@
 
                             <label for="email" class="col-2 col-form-label">Email</label>
                             <div class="col-10">
-                                <input  ng-model="model.userNow[0].email"
+                                <input  ng-model="model.userNow.email"
                                         class="form-control btn-round"
                                         type="email"
                                         id="email"
@@ -148,9 +149,10 @@
 
                         <div class="form-group">
 
-                            <label for="dateofBirth" class="col-2 col-form-label">Date of Birth</label>
+                            <label for="dateofBirth" class="col-2 col-form-label">Username</label>
                             <div class="col-10">
-                                <input ng-model="model.userNow[0].date"
+                                <!-- ng-model="model.userNow[0].date"-->
+                                <input ng-model="model.userNow.username"
                                        class="form-control btn-round"
                                        type="text"
                                        id="dateofBirth"
@@ -160,7 +162,7 @@
 
                         <p>
                             <strong> Lets Connect At: &nbsp;&nbsp;</strong>
-                            <a target="_blank" ng-src="{{model.userNow[0].facebooklink}}">
+                            <a target="_blank" ng-src="{{model.userNow.facebooklink}}">
                                 <span class="fa fa-facebook"></span><strong>&nbsp;&nbsp;Facebook</strong>
                             </a>
                         </p>
@@ -171,9 +173,9 @@
                     <div class="tab-pane panel in" id="tab2" style="background-color:#245269">
                         <div class="row">
                             <div class="col-xs-6 col-sm-4 col-lg-4 col-md-4" ng-repeat="event in model.eventsLikedMember track by $index">
-                                <div class="thumbnail">
-                                    <img class="image-set" ng-src="{{event.eventImage}}">
-                                    <div class="caption">
+                                <div class="thumbnail boxing">
+                                    <img class="image-set img-rounded" ng-src="{{event.eventImage}}">
+                                    <div class="caption tmb-head">
                                         <h4 class="event-name">{{event.eventName}}</h4>
                                     </div>
 
@@ -213,6 +215,7 @@
                         </div>
                     </div>
 
+                    <!--  DASHBOARD -->
                     <div class="tab-pane panel fade in" id="tab5" style="background-color:#245269">
                         Keep Tuned for User Status Dashboards
                     </div>

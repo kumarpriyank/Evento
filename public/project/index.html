@@ -102,7 +102,7 @@
                 <li><a ng-click="model.switchTo('contact')"><span class="fa fa-reply-all"></span> &nbsp; Contact</a></li>
                 <li><a ng-click="model.switchTo('about')" class="hidden-xs"><span class="fa fa-paw"></span> &nbsp; About</a></li>
                 <!--li><a ng-click="model.switchTo('twitter')" class="hidden-xs"><span class="fa fa-twitter"></span> Twitter</a></li-->
-                <li ng-if="currentUser"><a href="#/user/profile"><span class="fa fa-user"></span>&nbsp;{{currentUser.username}}</a></li>
+                <li ng-if="currentUser"><a href="#/user/profile"><span class="fa fa-user"></span>&nbsp; {{currentUser.username}}</a></li>
                 <li ng-if="currentUser"><a href="#/user/activity/profile/{{currentUser.username}}"><span class="fa fa-male"></span> &nbsp;Activity</a></li>
                 <li ng-if="currentUser"><a ng-click="model.logout()"><span class="fa fa-power-off"></span> &nbsp; Logout</a></li>
 
