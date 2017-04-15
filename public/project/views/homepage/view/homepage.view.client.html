@@ -14,7 +14,8 @@
             <div class="item active">
                 <img class="img-responsive" src="../../../images/projectImages/slider/bg1.jpg" alt="slider">
                 <div class="carousel-caption">
-                    <h2>Register for our next event </h2>
+                    <h2>Search for our next event</h2>
+
                     <h4>full event package only @$199</h4>
                     <a target="_blank" href="https://www.eventbrite.com/">GRAB YOUR TICKETS<i
                             class="fa fa-angle-right"></i></a>
@@ -75,45 +76,66 @@
 
 <!-- SEARCH STARTS-->
 <section id="explore">
-    <div class="col-md-8">
-        <form name="SearchForm" novalidate>
-            <div class="row">
-                <div class="col-md-4">
-                    <input type="text"
-                           ng-model="location"
-                           class="form-control"
-                           placeholder="Location"
-                           name="location"
-                           required
-                           id="location"/>
+    <div class="row">
+        <div class="col-md-8">
+            <form name="SearchForm" novalidate>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text"
+                               ng-model="location"
+                               class="form-control"
+                               placeholder="Location"
+                               name="location"
+                               required
+                               id="location"/>
 
-                    <div ng-show="SearchForm.location.$invalid && SearchForm.$submitted">
-                        <span class="error"> Location Missing </span>
+                        <div ng-show="SearchForm.location.$invalid && SearchForm.$submitted">
+                            <span class="error"> Location Missing </span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <input id="eventname"
-                           type="text"
-                           ng-model="event"
-                           class="form-control"
+                    <div class="col-md-4">
+                        <input id="eventname"
+                               type="text"
+                               ng-model="event"
+                               class="form-control"
                            name="eventname"
                            required
                            placeholder="Event Name"/>
 
-                    <div ng-show="SearchForm.eventname.$invalid && SearchForm.$submitted">
-                        <span class="error">Event Missing</span>
+                        <div ng-show="SearchForm.eventname.$invalid && SearchForm.$submitted">
+                            <span class="error">Event Missing</span>
+                        </div>
+                    </div>
+                    <div class="input-group-btn col-md-4">
+                        <button ng-click="model.searchEventByNameLocation(event, location, SearchForm)" class=" event-name btn btn-warning btn-round" type="submit"> Search</button>
+                    </div>
+                 </div>
+            </form>
+        </div>
+
+        <div class="col-md-4">
+            <form name="SearchFormEvent" novalidate>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input id="eventNameOnly"
+                               type="text"
+                               ng-model="eventNameOnly"
+                               class="form-control"
+                               name="eventNameOnly"
+                               required
+                               placeholder="Event Name"/>
+
+                        <div ng-show="SearchFormEvent.eventNameOnly.$invalid && SearchFormEvent.$submitted">
+                            <span class="error">Event Missing</span>
+                        </div>
+                    </div>
+                    <div class="input-group-btn col-md-4">
+                        <button ng-click="model.searchEventByName(eventNameOnly, SearchFormEvent)" class=" event-name btn btn-warning btn-round" type="submit"> Search</button>
                     </div>
                 </div>
-                <div class="input-group-btn col-md-4">
-                    <button ng-click="model.searchEventByNameLocation(event, location, SearchForm)" class=" event-name btn btn-warning btn-round" type="submit"> Search</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
-    <div class="col-md-4">
-        <h2><strong> SEARCH EVENTS </strong></h2>
+            </form>
+        </div>
     </div>
 </section>
 <!-- SEARCH ENDS-->

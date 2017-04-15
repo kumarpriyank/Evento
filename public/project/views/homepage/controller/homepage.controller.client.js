@@ -110,8 +110,7 @@
          * Searches for an event
          */
         function searchEventByName(eventName, form) {
-            console.log($('#searchevent').val());
-            if ($('#searchevent').val() != "")
+            if ($('#eventNameOnly').val() != "")
                 $location.url("/event/" + eventName + "/location/boston");
         }
 
