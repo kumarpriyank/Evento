@@ -1,25 +1,27 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!--div class="col-md-2"-->
+        <div class="profile-header-container">
+            <div class="profile-header-img" style="padding-bottom:0px;">
+                <img ng-if="model.loggedInUser.url" class="img-circle" ng-src="{{model.loggedInUser.url}}" />
+                <img ng-if="!model.loggedInUser.url" class="img-circle" ng-src="../../../images/projectImages/user.png" />
+            </div>
+            <h2><strong> Admin Console</strong></h2>
+        </div>
 
-            <div class="profile-header-container">
-                <div class="profile-header-img" style="padding-bottom:0px;">
-                    <img ng-if="model.loggedInUser.url" class="img-circle" ng-src="{{model.loggedInUser.url}}" />
-                    <img ng-if="!model.loggedInUser.url" class="img-circle" ng-src="../../../images/projectImages/user.png" />
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10 profile-header btn-pref btn-group table-responsive">
+
+                <div ng-if="model.error" class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">X</span>
+                    </button>
+                    <strong>Error Occured. Please try again. </strong> {{model.error}}
                 </div>
-                <h2><strong> Hello Admin</strong></h2>
-            </div>
-        <!--/div-->
 
-        <div class="profile-header btn-pref btn-group table-responsive" style="align-content: center">
-
-            <div ng-if="model.error" class="alert alert-danger alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>Error Occured. Please try again. </strong> {{model.error}}
-            </div>
-
-            <h2 class="page-header">User Management</h2>
+                 <h2 class="page-header">User Management</h2>
 
             <table class="table table-inverse table-responsive">
                 <thead>
@@ -27,13 +29,12 @@
 
                     <th class="nowrap table-font-name">First Name</th>
 
-                    <th class="nowrap table-font-name"> Last Name
-                    </th>
-
+                    <th class="nowrap table-font-name"> Last Name</th>
 
                     <th  class="nowrap table-font-name"> Username </th>
 
                     <th class="nowrap table-font-name">Email</th>
+
                     <th class="table-font-name">Roles</th>
                 </tr>
                 </thead>
@@ -82,16 +83,16 @@
                     <td>
                         <a ng-click="model.addUserAdmin(model.selectedUser)"
                            ng-show="model.isUserSelected == -1">
-                            <span class="glyphicon glyphicon-plus plusicon pull-left" aria-hidden="true"></span></a>
+                            <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true"></span></a>
 
                         <a ng-click="model.updateUserAdmin(model.selectedUser)"
                            ng-hide="model.isUserSelected == -1">
-                            <span class="glyphicon glyphicon-ok okicon pull-right" aria-hidden="true"></span></a>
+                            <span class="glyphicon glyphicon-ok pull-right" aria-hidden="true"></span></a>
                     </td>
 
                 </tr>
                 <br>
-                <tr ng-repeat="user in model.users | orderBy:model.checkUserName:model.isReverse">
+                <tr ng-repeat="user in model.users">
                     <td><span class="form-control"> {{user.firstName}}</span></span></td>
                     <td><span class="form-control">{{user.lastName}}</span></td>
                     <td><span class="form-control">{{user.username}}</span></td>
@@ -100,16 +101,18 @@
 
                     <td>
                         <a ng-click="model.deleteUserAdmin(user)">
-                            <span class="glyphicon glyphicon-remove removeicon pull-left" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-remove pull-left" aria-hidden="true"></span>
                         </a>
                         <a ng-click="model.selectUserAdmin(user)">
-                            <span class="glyphicon glyphicon-cog pencilicon pull-right" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-cog pull-right" aria-hidden="true"></span>
                         </a>
                     </td>
                 </tr>
                 </tbody>
             </table>
-
+            </div>
+            <div class="col-md-1">
+            </div>
     </div>
     </div>
 </div>

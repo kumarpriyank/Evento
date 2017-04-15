@@ -13,7 +13,6 @@
 
         vm.user = $rootScope.currentUser;
         vm.checkUserName = 'username';
-        vm.isReverse = true;
 
         vm.selectUserAdmin = selectUserAdmin;
         vm.addUserAdmin = addUserAdmin;
@@ -61,10 +60,9 @@
             if(!user){
                 if(user.username == "")
                     vm.error =  "  User Name required";
-                vm.error =  "  Try Again";
+                vm.error =  "  Error Occured Try Again";
             }
             else{
-                console.log(user.password);
                 if(user.password == undefined)
                     user.password = user.username;
 
@@ -72,14 +70,8 @@
                     function (success) {
                         vm.users = success.data;
                         init(); },
-                    function (err) {    vm.error = err.data;  });
+                    function (err) { vm.error = err.data;  });
             }
         }
-
-        vm.orderColumn = function (checkUserName) {
-            vm.isReverse = (vm.checkUserName == checkUserName) ? !vm.isReverse : false;
-            vm.checkUserName = checkUserName;
-        };
-
     }
 })();
