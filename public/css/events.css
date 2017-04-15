@@ -115,13 +115,17 @@ footer {
 }
 /*teal*/
 .list-group-item{
+   /* background-color: #F6682F;*/
     background-color: #F6682F;
     border-color: black;
     border: double;
     color: black;
     font-family: 'Copperplate', 'Lucida Sans Typewriter', 'sans-serif';
-    border-radius: 15px;
+    /*border-radius: 15px 15px 15px;*/
     border-top:3px;
+    border-bottom:3px;
+    white-space: normal;
+
 }
 
 .event-heading{

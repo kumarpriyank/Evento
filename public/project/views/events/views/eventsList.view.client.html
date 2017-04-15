@@ -4,9 +4,11 @@
        <div class="col-md-3">
            <h2><p class="lead event-heading"><strong> Event Categories</strong></p></h2>
            <div class="list-group">
-               <a ng-repeat = "category in model.categories"
-                  ng-click=model.getEventByCategory(category.name);
-                  class="list-group-item">{{category.name}}</a>
+               <li ng-repeat = "category in model.categories" style="list-style: none;">
+                   <br>
+                   <a ng-click=model.getEventByCategory(category);
+                      class="list-group-item event-name"> <span class="glyphicon glyphicon-search"></span> {{category}}</a>
+               </li>
            </div>
        </div>
 

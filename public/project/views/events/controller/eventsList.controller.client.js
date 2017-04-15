@@ -24,7 +24,13 @@
 
             EventService.getCategoriesList().then(
 
-                function(res){ vm.categories = res.data.categories; },
+                function(res){
+                    vm.cat = res.data.categories;
+                    vm.categories=[];
+                    //vm.categories = res.data.categories;
+                    for (var i in vm.cat){
+                        vm.categories[i] = vm.cat[i].name;
+                    }},
                 function(error){ vm.categories=[]; });
 
             EventService.getEventsList(vm.event, vm.location).then(
@@ -58,7 +64,7 @@
          *  Gets events based on category
          */
         function getEventByCategory(category){
-
+            console.log(category);
             vm.event = category.replace('&',"and");
             init();
         }
