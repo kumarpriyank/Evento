@@ -57,8 +57,16 @@
              // Get the events categories and the event based on event ID
             EventService.getCategoriesList().then(
 
-                function(res){ vm.categories = res.data.categories; },
+                function(res){
+                    vm.cat = res.data.categories;
+                    vm.categories=[];
+                    //vm.categories = res.data.categories;
+                    for (var i in vm.cat){
+                        vm.categories[i] = vm.cat[i].name;
+                    } },
                 function(error){ vm.categories=[]; });
+
+
 
             EventService.getEventbyId(vm.eventId).then(
 
