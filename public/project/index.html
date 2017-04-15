@@ -93,16 +93,17 @@
 
                 <!-- IF THERE IS NO CURRENT USER YOU SEE LOGIN OPTION -->
                 <li ng-if="!currentUser"><a ng-click="model.switchTo('login')"><span class="fa fa-male"></span>&nbsp; Login</a></li>
+                <!-- ng-if="currentUser.role == 'a'" -->
 
                 <!-- IF THE USER IS ADMIN USER HE SEES ADMIN ON THE TOP -->
-                <li ng-if="currentUser.role == 'a'"> <a href="#/admin"><span class="fa fa-user-secret"> </span> &nbsp; Admin </a></li>
+                <li> <a href="#/admin"><span class="fa fa-user-secret"> </span> &nbsp; Admin </a></li>
 
                 <li><a ng-click="model.switchTo('explore')"><span class="fa fa-search"></span> &nbsp; Search</a></li>
                 <li><a ng-click="model.switchTo('contact')"><span class="fa fa-reply-all"></span> &nbsp; Contact</a></li>
-                <li><a ng-click="model.switchTo('about')" class="hidden-xs"><span class="fa fa-paw"></span> &nbsp; About Us</a></li>
-                <li><a ng-click="model.switchTo('twitter')" class="hidden-xs"><span class="fa fa-twitter"></span> &nbsp;Twitter</a></li>
-                <li ng-if="currentUser"><a href="#/user/profile"><span class="fa fa-user"></span> &nbsp; {{currentUser.username}} 's Profile</a></li>
-                <li ng-if="currentUser"><a href="#/user/activity/profile/{{currentUser.username}}"><span class="fa fa-male"></span> &nbsp; User Activity</a></li>
+                <li><a ng-click="model.switchTo('about')" class="hidden-xs"><span class="fa fa-paw"></span> &nbsp; About</a></li>
+                <!--li><a ng-click="model.switchTo('twitter')" class="hidden-xs"><span class="fa fa-twitter"></span> Twitter</a></li-->
+                <li ng-if="currentUser"><a href="#/user/profile"><span class="fa fa-user"></span>&nbsp;{{currentUser.username}}</a></li>
+                <li ng-if="currentUser"><a href="#/user/activity/profile/{{currentUser.username}}"><span class="fa fa-male"></span> &nbsp;Activity</a></li>
                 <li ng-if="currentUser"><a ng-click="model.logout()"><span class="fa fa-power-off"></span> &nbsp; Logout</a></li>
 
                 <li ng-if="currentUser" class="hidden-xs">
