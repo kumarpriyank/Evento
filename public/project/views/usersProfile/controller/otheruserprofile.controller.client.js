@@ -6,7 +6,7 @@
         .module("Evento")
         .controller("OtherUserProfileController", otherUserProfileController);
 
-    function otherUserProfileController(EventService, UserService, $route, $routeParams, $location, $rootScope, FollowersService, $anchorScroll) {
+    function otherUserProfileController(EventService, UserService, $routeParams, $rootScope, FollowersService) {
 
         // Need to initilize the variables required for this service
         var vm = this;
