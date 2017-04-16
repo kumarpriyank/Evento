@@ -50,7 +50,7 @@
                                     $route.reload();
                                     vm.loginSuccess = "User Login Successful.";
                                 } else
-                                    $location.url("/admin");
+                                    $location.url("/admin/" + user._id);
                         },
                     function (err) { vm.loginError = "User not found. Please try again"; });
             } else

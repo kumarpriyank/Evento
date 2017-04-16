@@ -97,7 +97,7 @@
 
                 <!-- IF THE USER IS ADMIN USER HE SEES ADMIN ON THE TOP -->
                 <!-- -->
-                <li ng-if="currentUser.role == 'a'"><a href="#/admin"><span class="fa fa-user-secret"> </span> &nbsp; Admin </a></li>
+                <li ng-if="currentUser.role == 'a'"><a href="#/admin/{{currentUser._id}}"><span class="fa fa-user-secret"> </span> &nbsp; Admin </a></li>
 
                 <li><a ng-click="model.switchTo('explore')"><span class="fa fa-search"></span> &nbsp; Search</a></li>
                 <li><a ng-click="model.switchTo('contact')"><span class="fa fa-reply-all"></span> &nbsp; Contact</a></li>
@@ -140,6 +140,7 @@
 </footer>
 
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCkaxAfwpM2JCz8v3YyeVwXbOkqhrUzcNc"></script>
+
 <script src="../js/project-js/gmaps.js"></script>
 
 <script>

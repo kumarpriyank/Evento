@@ -20,7 +20,7 @@
                 resolve: {
                     loggedIn: checkLoggedIn
                 }})
-            .when("/admin",{
+            .when("/admin/:userId",{
                 templateUrl: "views/admin/view/adminusers.view.client.html",
                 controller: "AdminController",
                 controllerAs: "model",
@@ -55,6 +55,8 @@
                 resolve: {
                     loggedIn: checkLoggedIn
                 }})
+
+       // $locationProvider.html5Mode(true);
     }
 
     function checkProfileAccess($location, UserService, $q, $rootScope){

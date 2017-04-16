@@ -7,11 +7,10 @@
         .module("Evento")
         .controller("AdminController", adminController);
 
-    function adminController(UserService, $rootScope) {
+    function adminController(UserService, $routeParams) {
 
         var vm = this;
-
-        vm.user = $rootScope.currentUser;
+        vm.userId = $routeParams['userId'];
         vm.checkUserName = 'username';
 
         vm.selectUserAdmin = selectUserAdmin;
@@ -28,7 +27,11 @@
                 function (success) {  vm.users = success.data; },
                 function (error) {  vm.error = error; });
 
+            UserService.findUserById(vm.userId).then(
+                function(success) { vm.user = success.data; },
+                function (error) { vm.error = error; });
         }
+
         init();
 
 
