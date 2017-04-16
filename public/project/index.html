@@ -96,8 +96,8 @@
                 <!--  -->
 
                 <!-- IF THE USER IS ADMIN USER HE SEES ADMIN ON THE TOP -->
-                <!-- ng-if="currentUser.role == 'a'"-->
-                <li ><a href="#/admin"><span class="fa fa-user-secret"> </span> &nbsp; Admin </a></li>
+                <!-- -->
+                <li ng-if="currentUser.role == 'a'"><a href="#/admin"><span class="fa fa-user-secret"> </span> &nbsp; Admin </a></li>
 
                 <li><a ng-click="model.switchTo('explore')"><span class="fa fa-search"></span> &nbsp; Search</a></li>
                 <li><a ng-click="model.switchTo('contact')"><span class="fa fa-reply-all"></span> &nbsp; Contact</a></li>
