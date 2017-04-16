@@ -57,17 +57,4 @@ module.exports = function () {
         });
         return deferred.promise;
     }
-
-/*
-    function findCommentByUserName(username) {
-        return Comment.find({"username": username})
-    }
-
-    function findCommentByEventId(eventId) {
-        return Comment.find({"eventId": eventId}).sort({dateCreated: 1});
-    }
-
-    function removeComment(commentId) {
-        return Comment.remove({_id: commentId});
-    }*/
 };
