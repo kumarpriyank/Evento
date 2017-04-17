@@ -65,8 +65,14 @@
             function(response){
                 var user = response.data;
 
-                if(user == '0'){  $rootScope.currentUser = null;  deferred.reject();  $location.url("/"); }
-                else{  $rootScope.currentUser = user; deferred.resolve(); }},
+                if(user == 'Not Found') {
+                    $rootScope.currentUser = null;
+                    deferred.reject();
+                    $location.url("/"); }
+                else{
+                    $rootScope.currentUser = user;
+                    deferred.resolve();
+                }},
 
             function(error){ $location.url("/"); } );
         return deferred.promise;
@@ -77,7 +83,7 @@
         UserService.loggedIn().then(
                 function (response) {
                     var user = response.data;
-                    if (user == '0')
+                    if (user == 'Not Found')
                         $rootScope.currentUser = null;
                     else
                         $rootScope.currentUser = user;

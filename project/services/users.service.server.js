@@ -74,19 +74,19 @@ module.exports = function (app, models) {
 
     // FACEBOOK AUTHENTICATION
     // Generating facebook configuration Object
-    /*
+
     var facebookConfig = {
         clientID     : process.env.FACEBOOK_CLIENT_ID,
         clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
         callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    };*/
-
+    };
+    /*
     var facebookConfig = {
         clientID :"1876601035942674",
         clientSecret: "be786de9d831f8be92686f37e00403aa",
         callbackURL: 'http://localhost:3000/auth/facebook/callback'
     };
-
+     */
     // Adding the login, session and encryption
     app.get("/auth/facebook", passport.authenticate('facebook'));
     app.get("/auth/facebook/callback", passport.authenticate('facebook',{ successRedirect: '/project/#/',  failureRedirect: '/project/#/login' }));
@@ -116,17 +116,18 @@ module.exports = function (app, models) {
     }
 
     // GOOGLE AUTHETICATION
+    /*
     var googleConfig = {
         clientID     : "807649706166-s2ll8ff77t3rlemisp9hom2eiabg8apv.apps.googleusercontent.com",
         clientSecret : "Svlk34RXohEFl7IIfmMPMa5I",
         callbackURL  : 'http://localhost:3000/auth/google/callback'
     };
-    /*
+     */
     var googleConfig = {
         clientID     : process.env.GOOGLE_CLIENT_ID,
         clientSecret : process.env.GOOGLE_CLIENT_SECRET,
         callbackURL  : process.env.GOOGLE_CALLBACK_URL
-    };*/
+    };
 
     app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/project/#/', failureRedirect: '/project/#/login'}));
@@ -214,7 +215,7 @@ module.exports = function (app, models) {
         if (req.isAuthenticated()) {
             res.send(req.user);
         } else {
-            res.send('0');
+            res.send('Not Found');
         }
     }
 
@@ -267,8 +268,8 @@ module.exports = function (app, models) {
     function createUser(req, res) {
         var user = req.body;
         userModel.findUserByUsername(user.username).then(
-                function (user) {
-                    if (user.length > 0)
+                function (usr) {
+                    if (usr.length > 0)
                         res.statusCode(400).send("User already exist");
                     else {
                         user.password = bcrypt.hashSync(user.password);
@@ -313,7 +314,9 @@ module.exports = function (app, models) {
             body: mail.toJSON()
         });
 
-        sg.API(request, function(response) { res.sendStatus(200); }, function (error) { res.statusCode(400).send(error); });
+        sg.API(request,
+            function(response) { res.sendStatus(200); },
+            function (error) { res.statusCode(400).send(error); });
 
     }
 

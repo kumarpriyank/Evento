@@ -12,7 +12,9 @@
 
         vm.switchTo = switchTo;
         vm.logout = logout;
-        vm.searchEventByName=searchEventByName;
+        vm.searchEventByName = searchEventByName;
+        vm.isAdminTrue = isAdminTrue;
+        vm.goToCurrentUser = goToCurrentUser;
 
         // Function to maintain the movement of control in the page
         function switchTo(element) {
@@ -35,8 +37,24 @@
          * Searches for an event
          */
         function searchEventByName(eventName, form) {
-            if ($('#searchevent').val() != "")
+            if(eventName != "")
                 $location.url("/event/" + eventName + "/location/boston");
         }
+
+        /*
+         *   The user is an admin user so need to route him
+         */
+        function isAdminTrue(userId){
+            $location.url("/admin/" + userId);
+        }
+
+        /*
+         *   Rououte to the user profile.
+         */
+        function goToCurrentUser(userId){
+            console.log(userId);
+            $location.url("/user/profile");
+        }
+
     }
 })();
