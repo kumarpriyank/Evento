@@ -242,7 +242,7 @@ module.exports = function (app, models) {
         userModel.findUserByUsername(user.username).then(
             function (usr) {
                 if (usr.length > 0)
-                    res.statusCode(400).send("Username already exist");
+                    res.status(400).send("Username already exist");
                 else {
                     user.password = bcrypt.hashSync(user.password);
                     userModel.createUser(user).then(
@@ -270,12 +270,12 @@ module.exports = function (app, models) {
         userModel.findUserByUsername(user.username).then(
                 function (usr) {
                     if (usr.length > 0)
-                        res.statusCode(400).send("User already exist");
+                        res.status(400).send("User already exist");
                     else {
                         user.password = bcrypt.hashSync(user.password);
                         userModel.createUser(user).then(
                             function (user) { res.json(user); },
-                            function (error) { res.statusCode(400).send(error); });
+                            function (error) { res.status(400).send(error); });
                     }
                 },
                 function (error) {
@@ -292,7 +292,7 @@ module.exports = function (app, models) {
         var user = req.body;
         userModel.updateUser(userId,user).then(
                 function(user){ res.sendStatus(200); },
-                function(error){ res.statusCode(404).send(error); });
+                function(error){ res.status(404).send(error); });
     }
 
     // Using Node sendgrid to send emails- reference https://github.com/sendgrid/sendgrid-nodejs#usage
@@ -316,7 +316,7 @@ module.exports = function (app, models) {
 
         sg.API(request,
             function(response) { res.sendStatus(200); },
-            function (error) { res.statusCode(400).send(error); });
+            function (error) { res.status(400).send(error); });
 
     }
 
@@ -351,10 +351,10 @@ module.exports = function (app, models) {
 
                     userModel.updateUser(userId,user).then(
                         function(success){ res.sendStatus(200); },
-                        function(error){ res.statusCode(404).send(error); });
+                        function(error){ res.status(404).send(error); });
                 },
 
-                function(error){ res.statusCode(404).send(error); });
+                function(error){ res.status(404).send(error); });
 
             res.redirect("/project/#/user/profile");
         }
@@ -370,7 +370,7 @@ module.exports = function (app, models) {
         var userId = req.params.userId;
         userModel.findUserById(userId).then(
             function(user){ res.send(user); },
-            function(err){ res.statusCode(404).send(err); });
+            function(err){ res.status(404).send(err); });
     }
 
 
@@ -381,7 +381,7 @@ module.exports = function (app, models) {
         var userName = req.params.username;
         userModel.findUserByUsername(userName).then(
             function(user){ res.json(user); },
-            function(err){  res.statusCode(404).send(error); });
+            function(err){  res.status(404).send(error); });
     }
 
     /*
@@ -405,7 +405,7 @@ module.exports = function (app, models) {
     function getUserByCredentials(username,password,res){
         userModel.findUserByCredentials(username,password).then(
             function (user) { res.json(user); },
-            function(err){ res.statusCode(404).send({});});
+            function(err){ res.status(404).send({});});
     }
 
     /*
@@ -424,7 +424,7 @@ module.exports = function (app, models) {
     function getAllUsers(req, res){
         userModel.findAllUsers().then(
             function(users){  res.json(users); },
-            function(err){  res.statusCode(404).send({}); });
+            function(err){  res.status(404).send({}); });
     }
 
 
@@ -435,6 +435,6 @@ module.exports = function (app, models) {
         var userId = req.params.userId;
         userModel.deleteUser(userId).then(
             function(succ){  res.send(200); },
-            function(err){  res.statusCode(404).send(error); });
+            function(err){  res.status(404).send(error); });
     }
 };

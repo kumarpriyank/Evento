@@ -90,7 +90,7 @@
                             else
                                 $location.url("/user/profile");
                         },
-                    function (err) { vm.registerError = err.data; });
+                    function (err) { console.log(err.data); vm.registerError = err.data; });
             } else {
 
                 vm.registerError = "Registration Error Occured. Please try again";
