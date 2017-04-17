@@ -72,6 +72,7 @@
                 else{
                     $rootScope.currentUser = user;
                     deferred.resolve();
+                   
                     if(user.role == 'a')
                         $location.url("/admin/" + user._id);
                     else
