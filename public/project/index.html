@@ -109,7 +109,7 @@
 
                 <li ng-if="currentUser"><a ng-click="model.goToCurrentUser(currentUser._id)"><span class="fa fa-user"></span>&nbsp; {{currentUser.username}}</a></li>
 
-                <li ng-if="currentUser"><a href="#/user/activity/profile/{{currentUser.username}}"><span class="fa fa-male"></span> &nbsp;Activity</a></li>
+                <li ng-if="currentUser"><a ng-click="model.goToUserProfile(currentUser.username)"><span class="fa fa-male"></span> &nbsp;Activity</a></li>
 
                 <li ng-if="currentUser"><a ng-click="model.logout()"><span class="fa fa-power-off"></span> &nbsp; Logout</a></li>
 

@@ -15,6 +15,7 @@
         vm.searchEventByName = searchEventByName;
         vm.isAdminTrue = isAdminTrue;
         vm.goToCurrentUser = goToCurrentUser;
+        vm.goToUserProfile = goToUserProfile;
 
         // Function to maintain the movement of control in the page
         function switchTo(element) {
@@ -54,6 +55,14 @@
         function goToCurrentUser(userId){
             console.log(userId);
             $location.url("/user/profile");
+        }
+
+
+        /*
+         *   Rououte to the user profile.
+         */
+        function goToUserProfile(username){
+            $location.url("/user/activity/profile/" + username);
         }
 
     }
