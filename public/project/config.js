@@ -72,6 +72,7 @@
                 else{
                     $rootScope.currentUser = user;
                     deferred.resolve();
+                    $location.url("/user/profile");
                 }},
 
             function(error){ $location.url("/"); } );

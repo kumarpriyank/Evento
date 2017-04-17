@@ -48,6 +48,7 @@
                             var user = res.data;
                                 if (user.role == "u") {
                                     $route.reload();
+                                    $location.url("user/profile");
                                     vm.loginSuccess = "User Login Successful.";
                                 } else
                                     $location.url("/admin/" + user._id);
@@ -84,6 +85,7 @@
                             var user = res.data;
                             vm.registerSuccess = "User Successfully Registered";
                             $route.reload();
+                            $location.url("user/profile");
                         },
                     function (err) { vm.registerError = err.data; });
             } else {
