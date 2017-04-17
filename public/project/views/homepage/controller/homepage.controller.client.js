@@ -46,10 +46,10 @@
                 UserService.login(username, password).then(
                     function (res) {
                             var user = res.data;
+                            vm.loginSuccess = "User Login Successful.";
                                 if (user.role == "u") {
                                     $route.reload();
-                                    $location.url("user/profile");
-                                    vm.loginSuccess = "User Login Successful.";
+                                    $location.url("/user/profile");
                                 } else
                                     $location.url("/admin/" + user._id);
                         },
@@ -85,7 +85,10 @@
                             var user = res.data;
                             vm.registerSuccess = "User Successfully Registered";
                             $route.reload();
-                            $location.url("user/profile");
+                            if(user.role == 'a')
+                                $location.url("/admin/" + user._id);
+                            else
+                                $location.url("/user/profile");
                         },
                     function (err) { vm.registerError = err.data; });
             } else {
